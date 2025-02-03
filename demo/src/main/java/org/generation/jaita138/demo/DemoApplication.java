@@ -2,6 +2,7 @@ package org.generation.jaita138.demo;
 
 //import org.generation.jaita138.demo.db.entity.Utente;
 import org.generation.jaita138.demo.CliManager.CliManager;
+import org.generation.jaita138.demo.db.service.RoleService;
 import org.generation.jaita138.demo.db.service.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,13 +15,16 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	private UtenteService utenteService;
 
+	@Autowired
+	private RoleService roleService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		new CliManager(utenteService);
+		new CliManager(utenteService, roleService);
 		//test1();
 	}
 
