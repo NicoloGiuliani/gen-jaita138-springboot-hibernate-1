@@ -3,6 +3,7 @@ package org.generation.jaita138.demo;
 //import org.generation.jaita138.demo.db.entity.Utente;
 import org.generation.jaita138.demo.CliManager.CliManager;
 import org.generation.jaita138.demo.db.service.RoleService;
+import org.generation.jaita138.demo.db.service.SubRedditService;
 import org.generation.jaita138.demo.db.service.UtenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,13 +19,16 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	private RoleService roleService;
 
+	@Autowired
+	private SubRedditService subRedditService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		new CliManager(utenteService, roleService);
+		new CliManager(utenteService, roleService, subRedditService);
 		//test1();
 	}
 
@@ -49,4 +53,3 @@ public class DemoApplication implements CommandLineRunner {
 	}
 	*/
 }
-

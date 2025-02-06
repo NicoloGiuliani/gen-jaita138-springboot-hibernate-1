@@ -51,7 +51,6 @@ public class Role {
         this.descrizione = descrizione;
     }
 
-
     @Override
     public String toString() {
         return "Role \n"

@@ -7,6 +7,8 @@ import org.generation.jaita138.demo.db.repo.RoleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class RoleService {
 
@@ -21,6 +23,7 @@ public class RoleService {
         return roleRepo.findAll();
     }
 
+    @Transactional
     public Role findById(Long id) {
         return roleRepo.findById(id).orElse(null);
     }

@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.generation.jaita138.demo.db.entity.Utente;
 import org.generation.jaita138.demo.db.repo.UtenteRepo;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class UtenteService {
@@ -21,9 +24,14 @@ public class UtenteService {
         return utenteRepo.findAll();
     }
 
+    @Transactional
     public Utente findById(Long id) {
 
-        return utenteRepo.findById(id).orElse(null);
+        //return utenteRepo.findById(id).orElse(null);
+
+        Utente utente = utenteRepo.findById(id).orElse(null);
+        Hibernate.initialize(utente.getsubReddit());
+        return utente;
     }
 
     public void delete(Utente utente) {
